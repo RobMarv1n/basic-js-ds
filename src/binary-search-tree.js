@@ -19,13 +19,16 @@ class BinarySearchTree {
   add(data) {
     function addNode(node, data) {
       if (node === null) return new Node(data);
+      if (node.data === data) return node;
+      if (data < node.data) {
+        node.left = addNode(node.left, data);
+      } else {
+        node.right = addNode(node.right, data);
+      }
+      return node;
     }
 
-    this.rootNode = addNode(this.rootNode, data)
-  }
-
-  add(data) {
-
+    this.rootNode = addNode(this.rootNode, data);
   }
 
   has(data) {
@@ -48,7 +51,11 @@ class BinarySearchTree {
 
   }
 }
-
+// const tree = new BinarySearchTree();
+// tree.add(2);
+// tree.add(3);
+// tree.add(4);
+// console.log(tree.root().data);
 module.exports = {
   BinarySearchTree
 };
