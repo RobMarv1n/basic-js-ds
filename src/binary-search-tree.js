@@ -46,7 +46,17 @@ class BinarySearchTree {
   }
 
   find(data) {
+    function findNode(node, data) {
+      if (node === null) return null;
+      if (node.data === data) return node;
+      if (data < node.data) {
+        return findNode(node.left, data);
+      } else {
+        return findNode(node.right, data);
+      }
+    }
 
+    return findNode(this.rootNode, data);
   }
 
   remove(data) {
