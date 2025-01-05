@@ -74,7 +74,6 @@ class BinarySearchTree {
         let maxLeftNode = node.left;
         while (maxLeftNode.right !== null) {
           maxLeftNode = maxLeftNode.right;
-          // console.log(maxLeftNode);
         }
         node.data = maxLeftNode.data;
         node.left = removeNode(node.left, maxLeftNode.data);
@@ -86,11 +85,19 @@ class BinarySearchTree {
   }
 
   min() {
-
+    let minNode = this.rootNode;
+    while (minNode.left !== null) {
+        minNode = minNode.left;
+    }
+    return minNode.data
   }
 
   max() {
-
+    let maxNode = this.rootNode;
+    while (maxNode.right !== null) {
+        maxNode = maxNode.right;
+    }
+    return maxNode.data
   }
 }
 
