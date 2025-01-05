@@ -32,17 +32,7 @@ class BinarySearchTree {
   }
 
   has(data) {
-    function hasNode(node, data) {
-      if (node === null) return false;
-      if (node.data === data) return true;
-      if (data < node.data) {
-        return hasNode(node.left, data);
-      } else {
-        return hasNode(node.right, data);
-      }
-    }
-
-    return hasNode(this.rootNode, data);
+    return Boolean(this.find(data));
   }
 
   find(data) {
