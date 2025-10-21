@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { NotImplementedError } = require('../lib/errors');
 
 const { ListNode } = require('../extensions/list-node.js');
 
@@ -19,7 +19,7 @@ class Queue {
   }
 
   getUnderlyingList() {
-    return this.list;
+    return this.list ? structuredClone(this.list) : null;
   }
 
   enqueue(value) {
@@ -35,6 +35,8 @@ class Queue {
   }
 
   dequeue() {
+    if (!this.list) return undefined;
+
     const headValue = this.list.value;
     this.list = this.list.next;
     return headValue;
